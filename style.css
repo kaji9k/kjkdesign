@@ -1,0 +1,404 @@
+@charset "utf-8";
+
+/* 共通部分　
+---------------------------- */
+
+html{
+    font-size: 100%;
+}
+
+body{
+    background-color: transparent;
+    color: #ffffff;
+    font-family: termina, Arial, Helvetica, sans-serif;
+    width: auto;
+    max-width: 100%;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+.background-image {     
+    position: fixed;               /* 背景画像を画面に固定 */
+    top: 0;                        /* 画面のトップに配置 */
+    left: 0;                       /* 画面の左端に配置 */
+    width: 100%;                   /* 画面全体の幅に広げる */
+    height: 100vh;                  
+    background-image: url(../images/bg.jpg); 
+    background-size: cover;        /* 画像をコンテナ全体にフィットさせる */
+    background-position: center;   /* 画像を中央に配置 */
+    background-repeat: no-repeat;  /* 画像の繰り返しを無効にする */
+    background-attachment: fixed;  /* 背景画像を固定 */
+    z-index: -1;            
+}
+
+
+/* HEADER
+---------------------------- */
+
+
+.title{
+    display: flex;
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    height: 100px;
+    padding: 57px 0px 0px 36px;
+    width: 400px;
+    max-width: 100%;
+}
+
+.page-header{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;  /* ヘッダーを背景画像の上に配置 */
+}
+
+/* PCサイズのナビゲーションメニュー */
+.main-nav{
+    display: flex;     
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 20px 12px;
+    margin-top: 57px;
+    list-style: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.main-nav li{
+    background-color: transparent;
+    margin-left: 36px;
+}
+
+.main-nav a{
+    padding: 12px 12px 12px 12px;
+}
+
+.main-nav a:hover{
+    opacity: 0.5;
+}
+
+
+/*========= ぼかしのためのCSS ===============*/
+
+.mainblur{
+	filter: blur(8px);
+}
+
+/*========= ナビゲーションのためのCSS ===============*/
+
+#g-nav{
+    /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+    position:fixed;
+	z-index: -1;
+	opacity: 0;/*はじめは透過0*/
+    /*ナビの位置と形状*/
+	top:0;
+	width:100%;
+    height: 100vh;/*ナビの高さ*/
+	background:rgba(255,255,255,0.3);/*背景を少し透過させる*/
+    /*動き*/
+	transition: all 0.3s;
+}
+
+/*アクティブクラスがついたら透過なしにして最前面へ*/
+#g-nav.panelactive{
+	opacity: 1;
+	z-index:999;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+    display: none;/*はじめは非表示*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+#g-nav.panelactive ul {
+    display: block;
+}
+/*リストのレイアウト設定*/
+
+#g-nav li{
+	list-style: none;
+    text-align: center; 
+}
+
+#g-nav li a{
+	color:#21A0DB;
+    font-weight: 500;
+    font-size: 20px;
+	padding:30px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+#g-nav li a:hover{
+    opacity: 0.5;
+}
+
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn{
+    display: none;
+	position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+	top:60px;
+	right: 10px;
+	cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+	
+/*×に変化*/	
+.openbtn span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+	background-color: #ffffff;
+  	width: 45%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* モバイルサイズでは非表示 */
+    }
+
+    .openbtn {
+        display: block; /* モバイルサイズで表示 */
+    }
+}
+
+
+/* 装飾たち */
+
+.sakana {
+    position: fixed;
+    bottom: 60px;
+    right: 0;
+    width: 350px;
+    height: auto; /* アスペクト比を維持 */
+    z-index: 10;
+}
+
+.hitode {
+    position: fixed;
+    bottom: 40px;
+    left: 30px;
+    width: 230px;
+    height: auto; /* アスペクト比を維持 */
+    z-index: 10;
+}
+    
+
+
+/* 画像を包むコンテナ */
+.container {      
+    display: flex;
+    flex-direction: column;    /* 子要素を縦に並べる */
+    justify-content: center;   /* 縦方向で中央に配置 */
+    align-items: center;       /* 横方向で中央に配置 */
+    margin: 150px auto 0px auto;
+    padding: 0 50px; /* 左右に余白を加える */
+    max-width: 900px; 
+}
+
+/* 画像とオーバーレイを包む */
+.image-wrapper {
+    border-radius: 10px;
+    position: relative;
+    max-width: 900px; 
+    max-height: 600px;
+    width: 100%;
+    margin: 0 50px 70px 50px;
+}
+
+/* 画像のスタイル */
+.sd {
+    border-radius: 10px;
+    display: block;
+    width: 100%;       /* 画像をコンテナに合わせて拡大・縮小 */
+    height: auto;      /* 高さを画像のアスペクト比に合わせる */
+}
+
+/* オーバーレイ */
+.overlay {
+    position: absolute;          /* 画像の上に配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0px 50px 70px 50px;
+    border-radius: 10px;
+    background: linear-gradient(to top, rgba(0, 125, 197, 0.5), rgba(0, 125, 197, 0)); 
+    font-family: "termina","Noto Sans JP";
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: flex-start; /* 左寄せにする */
+    align-items: flex-end; /* 下に配置する */
+    padding: 20px; /* テキストに少し余白を追加 */
+    opacity: 0;                  /* 初期状態では非表示 */
+    transition: opacity 0.5s ease; /* スムーズに表示 */
+}
+
+/* ホバー時にオーバーレイと文字を表示 */
+.image-wrapper:hover .overlay {
+    opacity: 1;
+}
+
+footer{
+    height: 300px;
+    padding: 48px 48px 40px;
+    display: flex;           
+    justify-content: center;
+}
+
+.footer-text{
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1.49;
+    text-align: center;
+    width: auto;
+    max-width: 100%;
+    justify-content: center;
+}
+
+
+.about_page{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    padding-bottom: 40px;
+    padding-top: 100px;
+    width: 100%;
+}
+
+
+.about_title {
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    padding-bottom: 70px;
+    padding-top: 70px;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%}
+
+
+.my_image{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto ;
+    margin-bottom: 70px;
+    border-radius: 10px; /* ここで角の丸さを指定 */
+  }
+
+.text_about{
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+
+/* ギャラリーページ */
+
+.gallery{
+    display: flex;
+    flex-direction: column;    /* 子要素を縦に並べる */
+    justify-content: center;   /* 縦方向で中央に配置 */
+    align-items: center;       /* 横方向で中央に配置 */
+    margin: 150px auto 0px auto;
+    padding: 0 50px; /* 左右に余白を加える */
+}
+
+
+.illust-wrapper {
+    border-radius: 10px;
+    position: relative;
+    max-width: 600px; 
+    width: 100%;
+    margin: 0 50px 100px 50px;
+}
+
+.illust {
+    border-radius: 10px;
+}
+
+/* オーバーレイ */
+.illust_title {
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 17px;;
+    text-align: center;
+    letter-spacing: 0.2em;
+    padding-top: 20px;
+}
