@@ -33,7 +33,7 @@ background-image {
     left: 0;                       /* 画面の左端に配置 */
     width: 100vw;                   /* 画面全体の幅に広げる */
     height: 100vh;                 
-    background-image: url(https://github.com/kaji9k/kjkdesign/blob/main/bg.jpg?raw=true); 
+    background-image: url(https://raw.githubusercontent.com/kaji9k/kjkdesign/main/bg.jpg); 
     background-repeat: no-repeat;  /* 画像の繰り返しを無効にする */
     z-index: -1;            
 }
