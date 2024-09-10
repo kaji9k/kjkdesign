@@ -17,6 +17,8 @@ body{
     justify-content: center;
     overflow-x: hidden;    
     background-image: url('https://github.com/kaji9k/kjkdesign/blob/main/bg.jpg?raw=true');
+    margin: 0;                    /* デフォルトのマージンをリセット */
+    height: 100vh;
     background-size: cover;       /* 画像をビューポート全体にフィットさせる */
     background-position: center;  /* 画像を中央に配置 */
     background-repeat: no-repeat; /* 画像の繰り返しを無効にする */
