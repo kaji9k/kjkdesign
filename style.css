@@ -39,8 +39,8 @@ img{
     position: fixed;               /* 背景画像を画面に固定 */
     top: 0;                        /* 画面のトップに配置 */
     left: 0;                       /* 画面の左端に配置 */
-    width: 100%;                   /* 画面全体の幅に広げる */
-    height: 100vh;                  
+    width: 100vw;                   /* 画面全体の幅に広げる */
+    height: 100vh;                 
     background-image: url(https://github.com/kaji9k/kjkdesign/blob/main/bg.jpg?raw=true); 
     background-size: cover;        /* 画像をコンテナ全体にフィットさせる */
     background-position: center;   /* 画像を中央に配置 */
