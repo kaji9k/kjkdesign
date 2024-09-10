@@ -15,14 +15,16 @@ body{
     width: auto;
     max-width: 100%;
     justify-content: center;
-    overflow-x: hidden;
+    overflow-x: hidden;    
+    background-image: url('https://github.com/kaji9k/kjkdesign/blob/main/bg.jpg?raw=true');
+    background-size: cover;       /* 画像をビューポート全体にフィットさせる */
+    background-position: center;  /* 画像を中央に配置 */
+    background-repeat: no-repeat; /* 画像の繰り返しを無効にする */
 }
 
-/* iPadやタブレットサイズのスクリーン向け */
 @media (min-width: 768px) and (max-width: 1024px) {
-body {
-        transform: scale(0.9); /* 要素を90%に縮小 */
-        transform-origin: 0 0; /* 縮小の基準点を左上に設定 */
+    body {
+        background-size: cover; /* または contain */
     }
 }
 
@@ -33,30 +35,6 @@ a{
 
 img{
     max-width: 100%;
-}
-
-.background-image {     
-    position: fixed;               /* 背景画像を画面に固定 */
-    top: 0;                        /* 画面のトップに配置 */
-    left: 0;                       /* 画面の左端に配置 */
-    width: 100vw;                   /* 画面全体の幅に広げる */
-    height: 100vh;                 
-    background-image: url(https://github.com/kaji9k/kjkdesign/blob/main/bg.jpg?raw=true); 
-    background-size: cover;        /* 画像をコンテナ全体にフィットさせる */
-    background-position: center;   /* 画像を中央に配置 */
-    background-repeat: no-repeat;  /* 画像の繰り返しを無効にする */
-    background-attachment: fixed;  /* 背景画像を固定 */
-    z-index: -1;            
-}
-
-/* iPadの画面サイズに対応するメディアクエリ */
-@media (min-width: 768px) and (max-width: 1024px) {
-    body {
-        background-image: url('path/to/your-image.jpg');
-        background-size: cover; /* または contain */
-        background-position: center;
-        background-repeat: no-repeat;
-    }
 }
 
 
