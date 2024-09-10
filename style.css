@@ -132,7 +132,6 @@ img{
     -webkit-overflow-scrolling: touch;
 }
 
-
 /*ナビゲーション*/
 #g-nav ul {
     display: none;/*はじめは非表示*/
@@ -297,7 +296,6 @@ img{
     font-family: "termina","Noto Sans JP";
     font-weight: 300;
     letter-spacing: 0.1em;
-	z-index: 1000;
     display: flex;
     justify-content: flex-start; /* 左寄せにする */
     align-items: flex-end; /* 下に配置する */
@@ -312,7 +310,7 @@ img{
 }
 
 footer{
-    height: 150px;
+    height: 300px;
     padding: 48px 48px 40px;
     display: flex;           
     justify-content: center;
