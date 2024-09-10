@@ -10,7 +10,8 @@ html{
 body{
     background-color: transparent;
     color: #ffffff;
-    font-family: termina, Arial, Helvetica, sans-serif;
+    font-family: termina, sans-serif;
+    font-style: normal;
     width: auto;
     max-width: 100%;
     justify-content: center;
