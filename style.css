@@ -300,10 +300,9 @@ img{
     justify-content: flex-start; /* 左寄せにする */
     align-items: flex-end; /* 下に配置する */
     padding: 20px; /* テキストに少し余白を追加 */
-    z-index: 1000;
     opacity: 0;                  /* 初期状態では非表示 */
     transition: opacity 0.5s ease; /* スムーズに表示 */
-	
+	z-index: 1000;	
 }
 
 /* ホバー時にオーバーレイと文字を表示 */
