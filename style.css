@@ -18,6 +18,15 @@ body{
     overflow-x: hidden;
 }
 
+/* iPadやタブレットサイズのスクリーン向け */
+@media (min-width: 768px) and (max-width: 1024px) {
+body {
+        transform: scale(0.9); /* 要素を90%に縮小 */
+        transform-origin: 0 0; /* 縮小の基準点を左上に設定 */
+    }
+}
+
+
 a{
     text-decoration: none;
 }
