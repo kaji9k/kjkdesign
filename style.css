@@ -35,10 +35,10 @@ img{
 
 
 
-.bg {
+.background-image {
   position: relative;
 }
-.bg::after {
+.background-image::after {
   content: "";
   width: 100vw;
   height: 100vh;
